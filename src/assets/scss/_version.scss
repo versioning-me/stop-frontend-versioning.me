@@ -17,7 +17,7 @@
 }
 
 .flex_test-item:nth-child(2) {
-  background-color:  #4CAF50; /* 背景色指定 */
+  //background-color:  #4CAF50; /* 背景色指定 */
 }
 
 .flex_test-item:nth-child(3) {
@@ -27,3 +27,9 @@
 .flex_test-item:nth-child(4) {
   background-color:  #00BCD4; /* 背景色指定 */
 }
+
+.commonStyle{ padding:30px; text-align:center; margin:30px; width:400px;}
+.styleA{border:3px dotted gray;}
+.styleB{border:3px dotted rgba(0,200,0,0.7);}
+.button{border:1px solid green; padding:3px; border-radius:5px; background-color:white;}
+.button p {color:green; margin-top:10px; margin-left:10px; margin-right: 10px;}
