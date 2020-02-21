@@ -1,0 +1,268 @@
+// Carousel
+
+.carousel {
+  @include layout_margin($top: m);
+  overflow: hidden;
+
+  &_list {
+    display: flex;
+    flex-wrap: unset !important;
+    justify-content: space-between;
+    margin-right: -0.625rem;
+    margin-left: -0.625rem;
+    @include motion(all, 250ms, into);
+    @include media_query_min(m) {
+      margin-right: -0.75rem;
+      margin-left: -0.75rem;
+    }
+  }
+
+  &_list-active {
+    transform: translate(-100%, 0px);
+  }
+
+  &_item {
+    flex: 0 0 auto;
+  }
+
+  &_btn {
+    @include weight(bold);
+    text-align: center;
+    color: $black;
+    @include component_margin(m, auto, 0, auto);
+  }
+
+  &_next,
+  &_prev {
+    position: relative;
+    vertical-align: middle;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    height: 1.25rem;
+    width: 1.25rem;
+    pointer-events: auto;
+
+    &::before {
+      @include absolute($top: 50%, $left: 50%);
+      transform: translate(-50%, -50%);
+      @include typo(3xs);
+      @include weight(bold);
+    }
+  }
+
+  &_prev {
+    @include component_margin(0, m, 0, 0);
+    visibility: hidden;
+
+    &::before {
+      @include icon(arrow_left);
+    }
+  }
+
+  &_prev-active {
+    visibility: visible;
+  }
+
+  &_next {
+    @include component_margin(0, 0, 0, m);
+    visibility: hidden;
+
+    &::before {
+      @include icon(arrow_right);
+    }
+  }
+
+  &_next-active {
+    visibility: visible;
+  }
+
+  &_current {
+    vertical-align: middle;
+  }
+
+  &_total {
+    vertical-align: middle;
+
+    &::before {
+      display: inline-block;
+      transform: rotate(-45deg);
+      content: "";
+      background-color: $black;
+      height: 0.125rem;
+      width: 0.8rem;
+      border-radius: 0.25rem;
+      @include component_margin(0, 2xs, 2xs, 3xs);
+    }
+  }
+}
+
+// Grid
+
+.grid {
+  position: relative;
+  padding: 0 gutter(gutter_01);
+  @include layout_margin($right: auto, $left: auto);
+  @include media_query_min(m) {
+    max-width: grid(width_02);
+    width: grid(width_ratio_02);
+    padding: 0 gutter(gutter_02);
+  }
+
+  &_s {
+    @include media_query_min(m) {
+      max-width: grid(width_01);
+      width: grid(width_ratio_01);
+    }
+  }
+}
+// Flex
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+
+  .col_1 {
+    @include media_query_max(m) {
+      flex: 0 1 100% !important;
+    }
+  }
+
+  .col_2 {
+    flex: 0 1 50%;
+  }
+
+  .col_3 {
+    flex: 0 1 50%;
+    @include media_query_min(m) {
+      flex: 0 1 33.3333333% !important;
+    }
+  }
+}
+// Heading
+
+.heading {
+  &_primary {
+    @include typo(m);
+    @include weight(light);
+    text-align: center;
+    @include media_query_min(m) {
+      @include typo(xl);
+    }
+  }
+
+  &_secondary {
+    @include typo(s);
+    @include weight(light);
+    text-align: center;
+    @include media_query_min(m) {
+      @include typo(l);
+    }
+  }
+}
+
+.subheading {
+  &_primary {
+    display: block;
+    @include typo(5xs);
+    @include component_margin($top: m);
+  }
+
+  &_secondary {
+    display: block;
+    @include typo(5xs);
+    text-transform: none !important;
+    @include component_margin($top: m);
+  }
+}
+// Upper
+
+.upper {
+  text-transform: uppercase !important;
+}
+// Btn
+
+.btn {
+  display: inline-flex;
+  @include typo(7xs);
+  text-align: center;
+  min-width: 10rem;
+  @include component_padding(m, l, m, l);
+}
+// Icon
+
+.icon {
+  &_twitter {
+    &::before {
+      @include icon(twitter);
+    }
+  }
+
+  &_instagram {
+    &::before {
+      @include icon(instagram);
+    }
+  }
+
+  &_contact {
+    &::before {
+      @include icon(contact);
+    }
+  }
+}
+// Wrapper
+
+#wrapper {
+  position: relative;
+  background-color: $white;
+  z-index: 1;
+}
+// Breadcrumb
+
+.breadcrumb {
+  position: relative;
+  border-bottom: 0.0625rem solid $cool_gray_200;
+
+  &_list {
+    @include component_padding($top: xs, $bottom: xs);
+    @include layout_margin($right: auto, $left: auto);
+    @include media_query_min(m) {
+      @include component_padding($top: m, $bottom: m);
+    }
+  }
+
+  &_item {
+    display: inline;
+  }
+
+  &_item {
+    position: relative;
+    display: inline;
+  }
+
+  &_item:nth-child(n + 2) {
+    @include component_margin($left: xs);
+    @include component_padding($left: m);
+
+    &::before {
+      @include absolute($top: 0.475rem, $left: 0);
+      background-color: $black;
+      border-radius: 50%;
+      content: '';
+      height: 0.25rem;
+      width: 0.25rem;
+    }
+  }
+
+  &_item:last-child .breadcrumb_name {
+    @include weight(regular);
+  }
+
+  &_link {
+    color: $black;
+  }
+
+  &_name {
+    @include typo(7xs);
+  }
+}
